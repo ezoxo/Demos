@@ -1,4 +1,4 @@
-<?
+﻿<?
 //вывод превью изображений из медиаколлекции битрикс со ссылкой на оригинал 
 function bitrixPrintGalleryById($collectionId)
 {

@@ -10,7 +10,7 @@
 function paginator($actualPageNumber, $totalCountOfAllRecords, $maxRecordsOnOnePage, $maxLinksInLine, $linkPrefix, $linkPostfix)
 {
 
-//Ýòè ñëîâà ìîæíî ïèñàòü íà ðóññêîì ÿçûêå $pageText='Ñòðàíèöà: '; $nextText='Äàëåå';
+//Ð­Ñ‚Ð¸ ÑÐ»Ð¾Ð²Ð° Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ð½Ð° Ñ€ÑƒÑÑÐºÐ¾Ð¼ ÑÐ·Ñ‹ÐºÐµ $pageText='Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°: '; $nextText='Ð”Ð°Ð»ÐµÐµ';
 $pageText="Page: ";
 $nextText = "Next ";
 
@@ -18,11 +18,11 @@ $nextText = "Next ";
 
 
 
-//åñëè â totalCountOfAllRecords ïåðåäàí ìàññèâ çàïèñåé, êîòîðûé íàäî ïîäñ÷èòàòü
+//ÐµÑÐ»Ð¸ Ð² totalCountOfAllRecords Ð¿ÐµÑ€ÐµÐ´Ð°Ð½ Ð¼Ð°ÑÑÐ¸Ð² Ð·Ð°Ð¿Ð¸ÑÐµÐ¹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½Ð°Ð´Ð¾ Ð¿Ð¾Ð´ÑÑ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ
 if (is_array($totalCountOfAllRecords)) $totalCountOfAllRecords=count($totalCountOfAllRecords);
 
 
-//ïðîâåðÿåì íóæåí ëè ñïèñîê ñòðàíèö, åñëè êîëè÷åñòâî çàïèñåé âñåãî, ïðåâûøàåò ëèìèò çàïèñåé íà îäíîé ñòðàíèöå, òî âûâîäèì
+//Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½ÑƒÐ¶ÐµÐ½ Ð»Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†, ÐµÑÐ»Ð¸ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð²ÑÐµÐ³Ð¾, Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°ÐµÑ‚ Ð»Ð¸Ð¼Ð¸Ñ‚ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ, Ñ‚Ð¾ Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ð¼
 if ($totalCountOfAllRecords > $maxRecordsOnOnePage) 
 {
 print "<p align=\"center\" class=\"pages\"> " . $pageText;

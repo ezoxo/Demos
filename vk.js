@@ -1,4 +1,4 @@
-//Р Р°СЃС€РёСЂРµРЅРёРµ РґР»СЏ С…СЂРѕРјР° Рё С„Р°РµСЂС„РѕРєСЃР° РґР»СЏ СЃРёРјРјРµС‚СЂРёС‡РЅРѕРіРѕ С€РёС„СЂРѕРІР°РЅРёСЏ РїРµСЂРµРїРёСЃРєРё РјРµС‚РѕРґРѕРј AES
+//Расширение для хрома и фаерфокса для симметричного шифрования переписки методом AES
 
 
 
@@ -74,7 +74,7 @@ function chatDecrypt()
 function vkPageDeCrypt()
 {
 
-//РµСЃР»Рё РѕС‚РєСЂС‹С‚ С‡Р°С‚
+//если открыт чат
 if (document.getElementById('im_tabs'))
 {
 
@@ -86,7 +86,7 @@ if (chats[i].className=="im_tab_selected")
 {
 var chatId=chats[i].id;
 chatId=chatId.replace('im_tab','');
-//alert ('selected chat id: ' + chatId); //РїРѕРґСЃРєР°Р·РєР° РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ ID С‡Р°С‚Р°
+//alert ('selected chat id: ' + chatId); //подсказка для определения ID чата
 }
 
 }
@@ -110,14 +110,14 @@ document.getElementById("im_texts").appendChild(secureFormsElem);
 var secureKeyHtmlButton='<div id="sucureButtonOn"><a href="#" onClick="window.secureKeysArray['+ chatId + ']=prompt(\'ENTER SECRET KEY FOR ID '+ chatId + ' HERE\',\'\'); return false;">ENTER SECRET KEY</a></div>';
 
 
-//Р°Р»РµСЂС‚ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃРµРєСЂРµС‚РЅРѕРіРѕ РєР»СЋС‡Р°
+//алерт для определения секретного ключа
 //if (window.secureKeysArray[chatId]!=null) {alert('secret key for'+ chatId + ' is ' + window.secureKeysArray[chatId]);}
 
 
 
 
 
-//РµСЃР»Рё РІ РѕРєРЅРµ РЅРµ РѕС‚СЂРёСЃРѕРІР°РЅР° РєРЅРѕРїРєР° Рё РѕРєРЅРѕ РЅРµ СЃРµРєСЂРµС‚РЅРѕ
+//если в окне не отрисована кнопка и окно не секретно
 if (document.getElementById('im_peer_holders').innerHTML.indexOf('ENTER')==-1 && window.secureKeysArray[chatId]==null){
 document.getElementById('im_peer_holders').innerHTML=document.getElementById('im_peer_holders').innerHTML + secureKeyHtmlButton;
 document.getElementById('im_texts').style.opacity='1';
@@ -129,7 +129,7 @@ document.getElementById('im_texts').style.opacity='1';
 
 var secureForms = document.getElementById('secureForms').childNodes;
 
-//РµСЃР»Рё С‡Р°С‚ СЃРµРєСЂРµС‚РЅС‹Р№
+//если чат секретный
 if (window.secureKeysArray[chatId]!=null){
 
 
@@ -141,7 +141,7 @@ document.getElementById('im_texts').style.position='relative';
 document.getElementById('secureForms').style.display='block';
 
 
-//СЃРѕР·РґР°С‘Рј СЃРµРєСЂРµС‚РЅСѓСЋ С„РѕСЂРјСѓ, РµСЃР»Рё РµС‘ РЅРµС‚
+//создаём секретную форму, если её нет
 if (document.getElementById('secureForm'+chatId)) {} else document.getElementById('secureForms').innerHTML=document.getElementById('secureForms').innerHTML+'<textarea id="secureForm'+chatId+'" style="height: 40px; width: 348px; padding: 3px 5px 5px 3px; display: block; font: normal normal 400 11px/16px Tahoma; border: 1px solid #C0CAD5; z-index: 140;  position: absolute; top:0; resize: none; " ></textarea>'
 
 
@@ -161,10 +161,10 @@ document.getElementById('im_send').onclick=function() {sendAES(chatId); IM.send(
 }
 
 
-//РµСЃР»Рё Р±С‹Р»Р° РѕС‚СЂРёСЃРѕРІР°РЅР° РєРЅРѕРїРєР° РІРІРµРґРёС‚Рµ РєР»СЋС‡ - СѓРґР°Р»РёС‚СЊ РµС‘
+//если была отрисована кнопка введите ключ - удалить её
 if (document.getElementById('sucureButtonOn')) {element=document.getElementById("sucureButtonOn"); element.parentNode.removeChild(element);}
 
-//РµСЃР»Рё РєРЅРѕРїРєР° РІРІРµРґРёС‚Рµ РєР»СЋС‡ РЅРµ Р±С‹Р»Р° РѕС‚СЂРёСЃРѕРІР°РЅР°
+//если кнопка введите ключ не была отрисована
 if (document.getElementById('secureOn')) {} 
 else 
 {
@@ -199,7 +199,7 @@ secureForms[i].style.display='none';
 
 }
 
-//Р·Р°РїСѓСЃРєР°РµРј С„СѓРЅРєС†РёСЋ СЃРЅРѕРІР°
+//запускаем функцию снова
 setTimeout(function() {
 vkPageDeCrypt();
 }, 500);

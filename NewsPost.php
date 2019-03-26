@@ -103,7 +103,7 @@ if(file_exists("../img/".$m."/full/".$id.".jpg")) unlink ("../img/".$m."/full/".
 $result=mysql_query("UPDATE $db_table SET image='$image' WHERE id='$id'",$db);
 }
 
-//
+//выводим страницу в шаблоне
 top($pagecontent);
 $template=load_templ("templ/".$m."/complete.htm");
 $data_var[id]=$id;
@@ -111,8 +111,8 @@ $data_var[modid]=$id;
 $data_var[modl]=$m;
 print_templ($template,$data_var,$m);
 bottom($pagecontent);
-//
-//Header("Location:index.php?m=".$m);
+
+//или переадресовываем Header("Location:index.php?m=".$m);
 
 mysql_close($db);
 
